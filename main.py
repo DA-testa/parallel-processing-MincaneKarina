@@ -4,7 +4,31 @@ def parallel_processing(n, m, data):
     output = []
     # TODO: write the function for simulating parallel tasks, 
     # create the output pairs
+    a = []
+    for i in range(int(n)):
+        a.append(i)
+            
+    threads  = []
+    index = 0
+    for i in range(int(m)+1):
+        if index > n-1:
+            index = 0
+        threads.append(a[index])
+        index = index +1
+            
+    # time
+    t = []
+    for i in range(n):
+        t.append(0)
 
+    print(t)
+    for i in data:
+       index = data.index(i)
+       thread = threads[index]
+       time = t[thread]
+
+       output.append([thread, time])
+       t[thread]= time  + i
     return output
 
 def main():
@@ -18,10 +42,6 @@ def main():
     a  = firstLine.split()
     n = int(a[0])
     m = int(a[1])
-    #n = 0
-    #m = 0
-    print(n)
-    print(m)
 
     # second line - data 
     secondLine = input()
@@ -35,7 +55,8 @@ def main():
     
     # TODO: print out the results, each pair in it's own line
 
-
+    for i, j in result:
+        print(i, j)
 
 if __name__ == "__main__":
     main()
