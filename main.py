@@ -16,19 +16,18 @@ def parallel_processing(n, m, data):
         threads.append(a[index])
         index = index +1
             
-    # time
+    
     t = []
     for i in range(n):
         t.append(0)
-
-    print(t)
-    for i in data:
-       index = data.index(i)
-       thread = threads[index]
+    
+    for i in range(m):
+       
+       thread = threads[i]
        time = t[thread]
 
        output.append([thread, time])
-       t[thread]= time  + i
+       t[thread]= time  + data[i]
     return output
 
 def main():
@@ -46,7 +45,6 @@ def main():
     # second line - data 
     secondLine = input()
     data = list(map(int, secondLine.split()))
-    print(data)
     # data - contains m integers t(i) - the times in seconds it takes any thread to process i-th job
     #data = []
 
